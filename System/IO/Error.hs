@@ -1,3 +1,5 @@
+{-# OPTIONS_GHC -fno-warn-unused-imports #-}
+-- apparent bug in GHC, reports a bogus warning for the Prelude import below
 module System.IO.Error (
       -- * I\/O errors
     IOError,                    -- = IOException
