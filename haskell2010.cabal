@@ -1,0 +1,58 @@
+name:		haskell2010
+version:	1.0.0.0
+license:	BSD3
+license-file:	LICENSE
+maintainer:	libraries@haskell.org
+bug-reports: http://hackage.haskell.org/trac/ghc/newticket?component=libraries/haskell2010
+synopsis:	Compatibility with Haskell 2010
+category:   Haskell2010
+description:
+        This package provides exactly the library modules defined by
+        the Haskell 2010 standard.
+homepage:	http://www.haskell.org/definition/
+build-type:     Simple
+Cabal-Version: >= 1.6
+
+Library
+    build-depends:	base >= 3 && < 5, array
+    exposed-modules:
+        Data.Array,
+        Data.Char,
+        Data.Complex,
+        System.IO,
+        System.IO.Error,
+        Data.Ix,
+        Data.List,
+        Data.Maybe,
+        Control.Monad,
+        Data.Ratio,
+        System.Environment,
+        System.Exit,
+
+        -- FFI modules
+        Data.Int,
+        Data.Word,
+        Data.Bits,
+
+        Foreign,
+        Foreign.Ptr,
+        Foreign.ForeignPtr,
+        Foreign.StablePtr,
+        Foreign.Storable,
+        Foreign.C,
+        Foreign.C.Error,
+        Foreign.C.String,
+        Foreign.C.Types,
+        Foreign.Marshal,
+        Foreign.Marshal.Alloc,
+        Foreign.Marshal.Array,
+        Foreign.Marshal.Error,
+        Foreign.Marshal.Utils
+    exposed: False
+    ghc-options: -package-name haskell2010
+    extensions: PackageImports, CPP
+
+source-repository head
+    type:     darcs
+    location: http://darcs.haskell.org/packages/haskell2010/
+
