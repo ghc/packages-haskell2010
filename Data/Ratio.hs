@@ -13,7 +13,7 @@ module Data.Ratio (
 import "base" Data.Ratio
 
 {- $code
-> module  Ratio (
+> module  Data.Ratio (
 >     Ratio, Rational, (%), numerator, denominator, approxRational ) where
 > 
 > infixl 7  %
