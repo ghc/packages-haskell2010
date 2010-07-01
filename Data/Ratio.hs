@@ -35,7 +35,7 @@ import "base" Data.Ratio
 > -- E.g., 12 `reduce` 8    ==  3 :%   2
 > --       12 `reduce` (-8) ==  3 :% (-2)
 > 
-> reduce _ 0              =  error "Ratio.% : zero denominator"
+> reduce _ 0              =  error "Data.Ratio.% : zero denominator"
 > reduce x y              =  (x `quot` d) :% (y `quot` d)
 >                            where d = gcd x y
 > 
