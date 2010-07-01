@@ -23,7 +23,7 @@ module Data.Maybe (
 import "base" Data.Maybe
 
 {- $code
-> module Maybe(
+> module Data.Maybe(
 >     Maybe(Nothing, Just),
 >     isJust, isNothing,
 >     fromJust, fromMaybe, listToMaybe, maybeToList,
