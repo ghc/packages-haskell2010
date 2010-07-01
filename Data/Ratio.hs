@@ -74,10 +74,10 @@ import "base" Data.Ratio
 >     succ x           =  x+1
 >     pred x           =  x-1
 >     toEnum           =  fromIntegral
->     fromEnum         =  fromInteger . truncate	-- May overflow
->     enumFrom         =  numericEnumFrom		-- These numericEnumXXX functions
->     enumFromThen     =  numericEnumFromThen	-- are as defined in Prelude.hs
->     enumFromTo       =  numericEnumFromTo	-- but not exported from it!
+>     fromEnum         =  fromInteger . truncate        -- May overflow
+>     enumFrom         =  numericEnumFrom               -- These numericEnumXXX functions
+>     enumFromThen     =  numericEnumFromThen   -- are as defined in Prelude.hs
+>     enumFromTo       =  numericEnumFromTo     -- but not exported from it!
 >     enumFromThenTo   =  numericEnumFromThenTo
 > 
 > instance  (Read a, Integral a)  => Read (Ratio a)  where
@@ -89,8 +89,8 @@ import "base" Data.Ratio
 > instance  (Integral a)  => Show (Ratio a)  where
 >     showsPrec p (x:%y)  =  showParen (p > ratPrec)
 >                                (showsPrec (ratPrec+1) x . 
-> 			        showString " % " . 
-> 				showsPrec (ratPrec+1) y)
+>                               showString " % " . 
+>                               showsPrec (ratPrec+1) y)
 > 
 > 
 > 
