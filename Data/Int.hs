@@ -25,7 +25,7 @@ For coercing between any two integer types, use
 from integer types preserves representation, not sign.
 
 The rules that hold for 'Prelude.Enum' instances over a bounded type
-such as 'Int' (see the section of the Haskell report dealing with
+such as 'Int' (see the section of the Haskell language report dealing with
 arithmetic sequences) also hold for the 'Prelude.Enum' instances over
 the various 'Int' types defined here.
 
