@@ -59,4 +59,11 @@ module Foreign.Marshal.Array (
   --
   advancePtr,     -- :: Storable a => Ptr a -> Int -> Ptr a
   ) where
-import "base" Foreign.Marshal.Array
+import qualified "base" Foreign.Marshal.Array as Base
+import "base" Foreign.Marshal.Array hiding (peekArray)
+import "base" Foreign hiding (peekArray)
+
+-- |Convert an array of given length into a Haskell list.
+--
+peekArray          :: Storable a => Int -> Ptr a -> IO [a]
+peekArray = Base.peekArray
