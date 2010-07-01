@@ -1,11 +1,11 @@
 module Data.Array (
     -- * Immutable non-strict arrays
     -- $intro
-      module Data.Ix		-- export all of Ix 
-    , Array 			-- Array type is abstract
+      module Data.Ix            -- export all of Ix 
+    , Array                     -- Array type is abstract
 
     -- * Array construction
-    , array	    -- :: (Ix a) => (a,a) -> [(a,b)] -> Array a b
+    , array         -- :: (Ix a) => (a,a) -> [(a,b)] -> Array a b
     , listArray     -- :: (Ix a) => (a,a) -> [b] -> Array a b
     , accumArray    -- :: (Ix a) => (b -> c -> b) -> b -> (a,a) -> [(a,c)] -> Array a b
     -- * Accessing arrays
@@ -142,9 +142,9 @@ array = Array.array
 > (//)                  :: (Ix a) => Array a b -> [(a,b)] -> Array a b
 > a // new_ivs          = array (bounds a) (old_ivs ++ new_ivs)
 >                       where
->                   	old_ivs = [(i,a!i) | i <- indices a,
+>                       old_ivs = [(i,a!i) | i <- indices a,
 >                                              i `notElem` new_is]
->                   	new_is  = [i | (i,_) <- new_ivs]
+>                       new_is  = [i | (i,_) <- new_ivs]
 > 
 > accum                 :: (Ix a) => (b -> c -> b) -> Array a b -> [(a,c)]
 >                                    -> Array a b
