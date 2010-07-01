@@ -20,8 +20,8 @@ module Data.Complex (
 import "base" Data.Complex
 
 {- $code
-> module Complex(Complex((:+)), realPart, imagPart, conjugate, mkPolar,
->                cis, polar, magnitude, phase)  where
+> module Data.Complex(Complex((:+)), realPart, imagPart, conjugate, mkPolar,
+>                     cis, polar, magnitude, phase)  where
 > 
 > infix  6  :+
 > 
