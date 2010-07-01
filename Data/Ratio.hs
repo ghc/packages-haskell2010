@@ -88,7 +88,7 @@ import "base" Data.Ratio
 > 
 > instance  (Integral a)  => Show (Ratio a)  where
 >     showsPrec p (x:%y)  =  showParen (p > ratPrec)
->                                (showsPrec (ratPrec+1) x . 
+>                               showsPrec (ratPrec+1) x . 
 >                               showString " % " . 
 >                               showsPrec (ratPrec+1) y)
 > 
