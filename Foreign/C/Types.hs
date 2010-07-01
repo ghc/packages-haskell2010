@@ -6,7 +6,7 @@ module Foreign.C.Types
           -- | These types are are represented as @newtype@s of
           -- types in "Data.Int" and "Data.Word", and are instances of
           -- 'Prelude.Eq', 'Prelude.Ord', 'Prelude.Num', 'Prelude.Read',
-          -- 'Prelude.Show', 'Prelude.Enum', 'Typeable', 'Storable',
+          -- 'Prelude.Show', 'Prelude.Enum', 'Storable',
           -- 'Prelude.Bounded', 'Prelude.Real', 'Prelude.Integral' and
           -- 'Bits'.
           CChar,  CSChar,  CUChar
@@ -21,14 +21,14 @@ module Foreign.C.Types
           -- | These types are are represented as @newtype@s of basic
           -- foreign types, and are instances of
           -- 'Prelude.Eq', 'Prelude.Ord', 'Prelude.Num', 'Prelude.Read',
-          -- 'Prelude.Show', 'Prelude.Enum', 'Typeable' and 'Storable'.
+          -- 'Prelude.Show', 'Prelude.Enum' and 'Storable'.
         , CClock,   CTime
 
           -- ** Floating types
           -- | These types are are represented as @newtype@s of
           -- 'Prelude.Float' and 'Prelude.Double', and are instances of
           -- 'Prelude.Eq', 'Prelude.Ord', 'Prelude.Num', 'Prelude.Read',
-          -- 'Prelude.Show', 'Prelude.Enum', 'Typeable', 'Storable',
+          -- 'Prelude.Show', 'Prelude.Enum', 'Storable',
           -- 'Prelude.Real', 'Prelude.Fractional', 'Prelude.Floating',
           -- 'Prelude.RealFrac' and 'Prelude.RealFloat'.
         , CFloat,  CDouble
