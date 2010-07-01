@@ -1,5 +1,5 @@
 -- |
--- The "Control.Monad" module provide the 'Functor', 'Monad' and
+-- The "Control.Monad" module provides the 'Functor', 'Monad' and
 -- 'MonadPlus' classes, together with some useful operations on monads.
 
 module Control.Monad (
