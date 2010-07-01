@@ -18,13 +18,17 @@ import "base" Data.Word
 -- unbounded size signed integers.  We do not do that yet since there is
 -- no demand for it.
 
+-- SDM: removed, after "All arithmetic is performed module 2^n...".  Neither
+-- Ian Lynagh nor I understand what this means:
+--   One non-obvious consequence of this is that 'Prelude.negate'
+--   should /not/ raise an error on negative arguments.
+
 {- $notes
 
 This module provides unsigned integer types of unspecified width ('Word')
 and fixed widths ('Word8', 'Word16', 'Word32' and 'Word64').  All
 arithmetic is performed modulo 2^n, where @n@ is the number of bits in
-the type.  One non-obvious consequence of this is that 'Prelude.negate'
-  should /not/ raise an error on negative arguments.
+the type.
 
 For coercing between any two integer types, use
 'Prelude.fromIntegral'.  Coercing word types to and from integer
