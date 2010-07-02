@@ -60,7 +60,6 @@ Library
         Foreign.Marshal.Error,
         Foreign.Marshal.Utils
     exposed: False
-    ghc-options: -package-name haskell2010
     extensions: PackageImports, CPP
 
 source-repository head
