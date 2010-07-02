@@ -37,7 +37,15 @@ module System.IO.Error (
     eofErrorType,
     illegalOperationErrorType, 
     permissionErrorType,
-    userErrorType
+    userErrorType,
+
+    -- * Throwing and catching I\/O errors
+
+    ioError,                    -- :: IOError -> IO a
+
+    catch,                      -- :: IO a -> (IOError -> IO a) -> IO a
+    try                         -- :: IO a -> IO (Either IOError a)
+
   ) where
 
 import "base" System.IO.Error hiding (IOError)
