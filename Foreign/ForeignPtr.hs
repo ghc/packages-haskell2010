@@ -11,6 +11,7 @@ module Foreign.ForeignPtr (
         , newForeignPtrEnv
         , addForeignPtrFinalizerEnv
         , withForeignPtr
+        , finalizeForeignPtr
 
         -- ** Low-level operations
         , unsafeForeignPtrToPtr
