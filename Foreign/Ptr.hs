@@ -26,5 +26,13 @@ module Foreign.Ptr (
     freeHaskellFunPtr, -- :: FunPtr a -> IO ()
     -- Free the function pointer created by foreign export dynamic.
 
+    -- * Integral types with lossless conversion to and from pointers
+    IntPtr,
+    ptrToIntPtr,
+    intPtrToPtr,
+    WordPtr,
+    ptrToWordPtr,
+    wordPtrToPtr
+
   ) where
 import "base" Foreign.Ptr
