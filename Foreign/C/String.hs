@@ -47,6 +47,11 @@ module Foreign.C.String (
   castCharToCChar,   -- :: Char -> CChar
   castCCharToChar,   -- :: CChar -> Char
 
+  castCharToCUChar,  -- :: Char -> CUChar
+  castCUCharToChar,  -- :: CUChar -> Char
+  castCharToCSChar,  -- :: Char -> CSChar
+  castCSCharToChar,  -- :: CSChar -> Char
+
   peekCAString,      -- :: CString    -> IO String
   peekCAStringLen,   -- :: CStringLen -> IO String
   newCAString,       -- :: String -> IO CString
