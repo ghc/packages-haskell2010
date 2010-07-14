@@ -15,6 +15,13 @@ the allocation function has terminated, leads to undefined behaviour.  Any
 further access to the memory area referenced by a pointer passed to
 'realloc', 'reallocBytes', or 'free' entails undefined
 behaviour.
+
+All storage allocated by functions that allocate based on a /size in bytes/
+must be sufficiently aligned for any of the basic foreign types
+that fits into the newly allocated storage. All storage allocated by
+functions that allocate based on a specific type must be sufficiently
+aligned for that type. Array allocation routines need to obey the same
+alignment constraints for each array element.
 -}
 module Foreign.Marshal.Alloc (
   -- * Memory allocation
