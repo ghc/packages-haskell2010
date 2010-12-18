@@ -84,4 +84,4 @@ catch = Exception.catch
 -- computation, and which are not fully handled.
 --
 try            :: IO a -> IO (Either IOError a)
-try = Base.try
+try = Exception.try
