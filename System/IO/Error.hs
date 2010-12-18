@@ -48,6 +48,7 @@ module System.IO.Error (
 
   ) where
 
+import qualified "base" Control.Exception as Exception
 import "base" System.IO.Error hiding (IOError,catch,try)
 import qualified "base" System.IO.Error as Base
 import Prelude hiding (IOError,catch)
@@ -77,7 +78,7 @@ type IOError = Base.IOError
 -- system prints the associated 'IOError' value and exits the program.
 --
 catch :: IO a -> (IOError -> IO a) -> IO a
-catch = Base.catch
+catch = Exception.catch
 
 -- | The construct 'try' @comp@ exposes IO errors which occur within a
 -- computation, and which are not fully handled.
