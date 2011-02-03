@@ -1,4 +1,4 @@
-{-# OPTIONS_GHC -XNoImplicitPrelude -XBangPatterns #-}
+{-# LANGUAGE NoImplicitPrelude, BangPatterns #-}
 -- |
 -- The Haskell 2010 Prelude: a standard module imported by default
 -- into all Haskell modules.  For more documentation, see the Haskell 2010
