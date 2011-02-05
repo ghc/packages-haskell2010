@@ -133,9 +133,10 @@ module Prelude (
   ) where
 
 #ifndef __HUGS__
+import qualified "base" Control.Exception.Base as New (catch)
 import "base" Control.Monad
 import "base" System.IO
-import "base" System.IO.Error
+import "base" System.IO.Error (IOError, ioError, userError)
 import "base" Data.List
 import "base" Data.Either
 import "base" Data.Maybe
@@ -181,3 +182,27 @@ f $! x  = x `seq` f x
 seq :: a -> b -> b
 seq _ y = y
 #endif
+
+-- | The 'catch' function establishes a handler that receives any
+-- 'IOError' raised in the action protected by 'catch'.
+-- An 'IOError' is caught by
+-- the most recent handler established by one of the exception handling
+-- functions.  These handlers are
+-- not selective: all 'IOError's are caught.  Exception propagation
+-- must be explicitly provided in a handler by re-raising any unwanted
+-- exceptions.  For example, in
+--
+-- > f = catch g (\e -> if IO.isEOFError e then return [] else ioError e)
+--
+-- the function @f@ returns @[]@ when an end-of-file exception
+-- (cf. 'System.IO.Error.isEOFError') occurs in @g@; otherwise, the
+-- exception is propagated to the next outer handler.
+--
+-- When an exception propagates outside the main program, the Haskell
+-- system prints the associated 'IOError' value and exits the program.
+--
+-- Non-I\/O exceptions are not caught by this variant; to catch all
+-- exceptions, use 'Control.Exception.catch' from "Control.Exception".
+catch :: IO a -> (IOError -> IO a) -> IO a
+catch = New.catch
+
