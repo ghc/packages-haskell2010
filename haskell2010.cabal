@@ -63,6 +63,6 @@ Library
     extensions: PackageImports, CPP
 
 source-repository head
-    type:     darcs
-    location: http://darcs.haskell.org/packages/haskell2010/
+    type:     git
+    location: http://darcs.haskell.org/packages/haskell2010.git/
 
