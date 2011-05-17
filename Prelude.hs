@@ -150,7 +150,8 @@ import GHC.Base
 import Text.Read
 import GHC.Enum
 import GHC.Num
-import GHC.Real
+import GHC.Real hiding ( gcd )
+import qualified GHC.Real ( gcd )
 import GHC.Float
 import GHC.Show
 import GHC.Err   ( undefined )
@@ -205,4 +206,13 @@ seq _ y = y
 -- exceptions, use 'Control.Exception.catch' from "Control.Exception".
 catch :: IO a -> (IOError -> IO a) -> IO a
 catch = New.catch
+
+#ifdef __GLASGOW_HASKELL__
+-- | @'gcd' x y@ is the greatest (positive) integer that divides both @x@
+-- and @y@; for example @'gcd' (-3) 6@ = @3@, @'gcd' (-3) (-6)@ = @3@,
+-- @'gcd' 0 4@ = @4@.  @'gcd' 0 0@ raises a runtime error.
+gcd             :: (Integral a) => a -> a -> a
+gcd 0 0         =  error "Prelude.gcd: gcd 0 0 is undefined"
+gcd x y         = GHC.Real.gcd x y
+#endif
 
