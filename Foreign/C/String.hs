@@ -1,3 +1,7 @@
+#if __GLASGOW_HASKELL__ >= 701
+{-# LANGUAGE Safe #-}
+#endif
+
 -- |
 -- Utilities for primitive marshalling of C strings.
 --

@@ -1,3 +1,7 @@
+#if __GLASGOW_HASKELL__ >= 701
+{-# LANGUAGE Safe #-}
+#endif
+
 module Foreign.C (
 
        -- | The module "Foreign.C" combines the interfaces of all

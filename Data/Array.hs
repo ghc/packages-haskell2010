@@ -1,3 +1,7 @@
+#if __GLASGOW_HASKELL__ >= 701
+{-# LANGUAGE Trustworthy #-}
+#endif
+
 module Data.Array (
     -- * Immutable non-strict arrays
     -- $intro

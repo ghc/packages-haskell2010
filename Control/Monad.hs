@@ -1,3 +1,7 @@
+#if __GLASGOW_HASKELL__ >= 701
+{-# LANGUAGE Safe #-}
+#endif
+
 -- |
 -- The "Control.Monad" module provides the 'Functor', 'Monad' and
 -- 'MonadPlus' classes, together with some useful operations on monads.

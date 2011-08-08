@@ -1,3 +1,7 @@
+#if __GLASGOW_HASKELL__ >= 701
+{-# LANGUAGE Safe #-}
+#endif
+
 -- | The module "Foreign.C.Error" facilitates C-specific error
 -- handling of @errno@.
 module Foreign.C.Error (

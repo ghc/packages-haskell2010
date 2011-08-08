@@ -1,3 +1,7 @@
+#if __GLASGOW_HASKELL__ >= 701
+{-# LANGUAGE Safe #-}
+#endif
+
 -- |
 -- This module defines bitwise operations for signed and unsigned
 -- integers.

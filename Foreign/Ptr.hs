@@ -1,3 +1,7 @@
+#if __GLASGOW_HASKELL__ >= 701
+{-# LANGUAGE Safe #-}
+#endif
+
 -- | The module "Foreign.Ptr" provides typed pointers to foreign
 -- entities.  We distinguish two kinds of pointers: pointers to data
 -- and pointers to functions.  It is understood that these two kinds
