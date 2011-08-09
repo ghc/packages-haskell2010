@@ -1,13 +1,12 @@
+{-# LANGUAGE NoImplicitPrelude, BangPatterns #-}
 #if __GLASGOW_HASKELL__ >= 701
 {-# LANGUAGE Trustworthy #-}
 #endif
 
-{-# LANGUAGE NoImplicitPrelude, BangPatterns #-}
 -- |
 -- The Haskell 2010 Prelude: a standard module imported by default
 -- into all Haskell modules.  For more documentation, see the Haskell 2010
 -- Report <http://www.haskell.org/onlinereport/>.
-
 module Prelude (
 
     -- * Standard types, classes and related functions
