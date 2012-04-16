@@ -17,4 +17,10 @@ module Foreign.Marshal.Error (
   void           -- IO a -> IO ()
 
   ) where
-import "base" Foreign.Marshal.Error
+import "base" Foreign.Marshal.Error hiding (void)
+
+-- |Discard the return value of an 'IO' action
+--
+void     :: IO a -> IO ()
+void act  = act >> return ()
+ -- base's version is deprecated
