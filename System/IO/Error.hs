@@ -53,7 +53,7 @@ module System.IO.Error (
   ) where
 
 import qualified "base" Control.Exception as Exception
-import "base" System.IO.Error hiding (IOError,catch,try)
+import "base" System.IO.Error hiding (IOError)
 import qualified "base" System.IO.Error as Base
 import Prelude hiding (IOError,catch)
 
