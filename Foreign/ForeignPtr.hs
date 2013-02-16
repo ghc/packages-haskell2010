@@ -27,6 +27,7 @@ module Foreign.ForeignPtr (
 
 import qualified "base" Foreign.ForeignPtr as Base
 import "base" Foreign.ForeignPtr hiding (mallocForeignPtr, touchForeignPtr)
+import "base" Foreign.ForeignPtr.Unsafe
 import "base" Foreign (Storable)
 
 -- SDM: local copy of the docs for mallocForeignPtr, to omit the
