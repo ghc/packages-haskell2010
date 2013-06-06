@@ -150,7 +150,6 @@ import GHC.Real hiding ( gcd )
 import qualified GHC.Real ( gcd )
 import GHC.Float
 import GHC.Show
-import GHC.Err   ( undefined )
 #endif
 
 #ifdef __HUGS__
