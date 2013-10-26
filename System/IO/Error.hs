@@ -1,5 +1,3 @@
-{-# OPTIONS_GHC -fno-warn-unused-imports #-}
--- apparent bug in GHC, reports a bogus warning for the Prelude import below
 #if __GLASGOW_HASKELL__ >= 701
 {-# LANGUAGE Safe #-}
 #endif
