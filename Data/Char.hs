@@ -39,6 +39,6 @@ module Data.Char (
     -- * String representations
     , showLitChar       -- :: Char -> ShowS
     , lexLitChar        -- :: ReadS String
-    , readLitChar       -- :: ReadS Char 
+    , readLitChar       -- :: ReadS Char
   ) where
 import "base" Data.Char

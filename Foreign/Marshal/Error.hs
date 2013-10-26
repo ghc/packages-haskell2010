@@ -6,7 +6,7 @@
 module Foreign.Marshal.Error (
   throwIf,       -- :: (a -> Bool) -> (a -> String) -> IO a       -> IO a
   throwIf_,      -- :: (a -> Bool) -> (a -> String) -> IO a       -> IO ()
-  throwIfNeg,    -- :: (Ord a, Num a) 
+  throwIfNeg,    -- :: (Ord a, Num a)
                  -- =>                (a -> String) -> IO a       -> IO a
   throwIfNeg_,   -- :: (Ord a, Num a)
                  -- =>                (a -> String) -> IO a       -> IO ()

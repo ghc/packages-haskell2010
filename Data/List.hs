@@ -21,7 +21,7 @@ module Data.List (
    , intersperse       -- :: a -> [a] -> [a]
    , intercalate       -- :: [a] -> [[a]] -> [a]
    , transpose         -- :: [[a]] -> [[a]]
-   
+
    , subsequences      -- :: [a] -> [[a]]
    , permutations      -- :: [a] -> [[a]]
 

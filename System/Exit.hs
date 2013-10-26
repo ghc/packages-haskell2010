@@ -31,7 +31,7 @@ import qualified "base" System.Exit as Base
 
 {- |
 Computation @'exitWith' code@ terminates the program, returning @code@
-to the program's caller.  
+to the program's caller.
 The caller may interpret the return code as it wishes, but the program
 should return 'ExitSuccess' to mean normal completion, and
 @'ExitFailure' n@ to mean that the program encountered a problem from

@@ -19,9 +19,9 @@ module System.IO.Error (
     isAlreadyExistsError,       -- :: IOError -> Bool
     isDoesNotExistError,
     isAlreadyInUseError,
-    isFullError, 
+    isFullError,
     isEOFError,
-    isIllegalOperation, 
+    isIllegalOperation,
     isPermissionError,
     isUserError,
 
@@ -38,7 +38,7 @@ module System.IO.Error (
     alreadyInUseErrorType,
     fullErrorType,
     eofErrorType,
-    illegalOperationErrorType, 
+    illegalOperationErrorType,
     permissionErrorType,
     userErrorType,
 

@@ -27,7 +27,7 @@ import "base" System.IO.Unsafe
 Sometimes an external entity is a pure function, except that it passes
 arguments and/or results via pointers.  The function
 @unsafeLocalState@ permits the packaging of such entities as pure
-functions.  
+functions.
 
 The only IO operations allowed in the IO action passed to
 @unsafeLocalState@ are (a) local allocation (@alloca@, @allocaBytes@

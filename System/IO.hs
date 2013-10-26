@@ -118,7 +118,7 @@ module System.IO (
 
     interact,                  -- :: (String -> String) -> IO ()
     putChar,                   -- :: Char   -> IO ()
-    putStr,                    -- :: String -> IO () 
+    putStr,                    -- :: String -> IO ()
     putStrLn,                  -- :: String -> IO ()
     print,                     -- :: Show a => a -> IO ()
     getChar,                   -- :: IO Char

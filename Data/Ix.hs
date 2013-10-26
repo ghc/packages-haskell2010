@@ -13,7 +13,7 @@ module Data.Ix (
           )
 
     -- * Deriving Instances of @Ix@
-    
+
     -- $derived
   ) where
 import "base" Data.Ix
@@ -50,7 +50,7 @@ are as shown for tuples:
 >                 =  index (l,u) i * rangeSize (l',u') + index (l',u') i'
 >         inRange ((l,l'),(u,u')) (i,i')
 >                 = inRange (l,u) i && inRange (l',u') i'
-> 
+>
 > -- Instances for other tuples are obtained from this scheme:
 > --
 > --  instance  (Ix a1, Ix a2, ... , Ix ak) => Ix (a1,a2,...,ak)  where

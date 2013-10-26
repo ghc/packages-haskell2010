@@ -44,7 +44,7 @@ module Control.Monad (
     , mapAndUnzipM  -- :: (Monad m) => (a -> m (b,c)) -> [a] -> m ([b], [c])
     , zipWithM      -- :: (Monad m) => (a -> b -> m c) -> [a] -> [b] -> m [c]
     , zipWithM_     -- :: (Monad m) => (a -> b -> m c) -> [a] -> [b] -> m ()
-    , foldM         -- :: (Monad m) => (a -> b -> m a) -> a -> [b] -> m a 
+    , foldM         -- :: (Monad m) => (a -> b -> m a) -> a -> [b] -> m a
     , foldM_        -- :: (Monad m) => (a -> b -> m a) -> a -> [b] -> m ()
     , replicateM    -- :: (Monad m) => Int -> m a -> m [a]
     , replicateM_   -- :: (Monad m) => Int -> m a -> m ()
@@ -70,23 +70,23 @@ import "base" Control.Monad
 
 {- $naming
 
-The functions in this library use the following naming conventions: 
+The functions in this library use the following naming conventions:
 
 * A postfix \'@M@\' always stands for a function in the Kleisli category:
   The monad type constructor @m@ is added to function results
-  (modulo currying) and nowhere else.  So, for example, 
+  (modulo currying) and nowhere else.  So, for example,
 
 >  filter  ::              (a ->   Bool) -> [a] ->   [a]
 >  filterM :: (Monad m) => (a -> m Bool) -> [a] -> m [a]
 
 * A postfix \'@_@\' changes the result type from @(m a)@ to @(m ())@.
-  Thus, for example: 
+  Thus, for example:
 
->  sequence  :: Monad m => [m a] -> m [a] 
->  sequence_ :: Monad m => [m a] -> m () 
+>  sequence  :: Monad m => [m a] -> m [a]
+>  sequence_ :: Monad m => [m a] -> m ()
 
 * A prefix \'@m@\' generalizes an existing function to a monadic form.
-  Thus, for example: 
+  Thus, for example:
 
 >  sum  :: Num a       => [a]   -> a
 >  msum :: MonadPlus m => [m a] -> m a
