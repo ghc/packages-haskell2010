@@ -1,4 +1,4 @@
-{-# LANGUAGE CPP #-}
+{-# LANGUAGE CPP, PackageImports #-}
 #if __GLASGOW_HASKELL__ >= 701
 {-# LANGUAGE Safe #-}
 #endif

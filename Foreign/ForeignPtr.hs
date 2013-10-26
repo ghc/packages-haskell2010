@@ -1,3 +1,5 @@
+{-# LANGUAGE PackageImports #-}
+
 module Foreign.ForeignPtr (
         -- * Finalised data pointers
           ForeignPtr

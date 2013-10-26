@@ -1,3 +1,5 @@
+{-# LANGUAGE PackageImports #-}
+
 module Foreign.Marshal (
          -- | The module "Foreign.Marshal" re-exports the other modules in the
          -- @Foreign.Marshal@ hierarchy:

@@ -1,4 +1,4 @@
-{-# LANGUAGE NoImplicitPrelude, BangPatterns #-}
+{-# LANGUAGE BangPatterns, CPP, NoImplicitPrelude, PackageImports #-}
 #if __GLASGOW_HASKELL__ >= 701
 {-# LANGUAGE Trustworthy #-}
 #endif

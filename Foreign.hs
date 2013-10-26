@@ -1,3 +1,5 @@
+{-# LANGUAGE PackageImports #-}
+
 module Foreign (
         -- | The module @Foreign@ combines the interfaces of all
         -- modules providing language-independent marshalling support,
