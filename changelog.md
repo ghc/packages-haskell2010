@@ -8,6 +8,6 @@
 
   - Remove NHC98-specific code
 
-  - Adapt to changes in GHC 7.8's core-libaries
+  - Adapt to changes in GHC 7.8's core-libraries
 
   - Update to Cabal format 1.10
