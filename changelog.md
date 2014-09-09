@@ -1,5 +1,9 @@
 # Changelog for [`haskell2010` package](http://hackage.haskell.org/package/haskell2010)
 
+## 1.1.2.1  *TBA*
+
+  - Bundled with GHC 7.10.1
+
 ## 1.1.2.0  *Mar 2014*
 
   - Bundled with GHC 7.8.1
