@@ -140,7 +140,7 @@ import "base" Data.Tuple
 #endif
 
 #ifdef __GLASGOW_HASKELL__
-import GHC.Base
+import GHC.Base hiding ( ($!) )
 -- import GHC.IO
 -- import GHC.IO.Exception
 import Text.Read
