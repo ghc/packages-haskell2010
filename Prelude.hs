@@ -1,7 +1,4 @@
-{-# LANGUAGE BangPatterns, CPP, NoImplicitPrelude, PackageImports #-}
-#if __GLASGOW_HASKELL__ >= 701
-{-# LANGUAGE Trustworthy #-}
-#endif
+{-# LANGUAGE BangPatterns, NoImplicitPrelude, PackageImports, Trustworthy #-}
 
 -- |
 -- The Haskell 2010 Prelude: a standard module imported by default
@@ -26,10 +23,6 @@ module Prelude (
 
     -- *** Tuples
     fst, snd, curry, uncurry,
-
-#ifdef __HUGS__
-    (:),                -- Not legal Haskell 98
-#endif
 
     -- ** Basic type classes
     Eq((==), (/=)),
@@ -128,7 +121,6 @@ module Prelude (
 
   ) where
 
-#ifndef __HUGS__
 import qualified "base" Control.Exception.Base as New (catch)
 import "base" Control.Monad
 import "base" System.IO
@@ -137,12 +129,8 @@ import "base" Data.List hiding ( splitAt )
 import "base" Data.Either
 import "base" Data.Maybe
 import "base" Data.Tuple
-#endif
 
-#ifdef __GLASGOW_HASKELL__
-import GHC.Base hiding ( ($!) )
--- import GHC.IO
--- import GHC.IO.Exception
+import GHC.Base
 import Text.Read
 import GHC.Enum
 import GHC.Num
@@ -150,34 +138,9 @@ import GHC.Real hiding ( gcd )
 import qualified GHC.Real ( gcd )
 import GHC.Float
 import GHC.Show
-#endif
-
-#ifdef __HUGS__
-import Hugs.Prelude
-#endif
-
-#ifndef __HUGS__
-infixr 0 $!
-#endif
 
 -- -----------------------------------------------------------------------------
 -- Miscellaneous functions
-
--- | Strict (call-by-value) application, defined in terms of 'seq'.
-($!)    :: (a -> b) -> a -> b
-#ifdef __GLASGOW_HASKELL__
-f $! x  = let !vx = x in f vx  -- see #2273
-#elif !defined(__HUGS__)
-f $! x  = x `seq` f x
-#endif
-
-#ifdef __HADDOCK__
--- | The value of @'seq' a b@ is bottom if @a@ is bottom, and otherwise
--- equal to @b@.  'seq' is usually introduced to improve performance by
--- avoiding unneeded laziness.
-seq :: a -> b -> b
-seq _ y = y
-#endif
 
 -- | The 'catch' function establishes a handler that receives any
 -- 'IOError' raised in the action protected by 'catch'.
@@ -202,16 +165,13 @@ seq _ y = y
 catch :: IO a -> (IOError -> IO a) -> IO a
 catch = New.catch
 
-#ifdef __GLASGOW_HASKELL__
 -- | @'gcd' x y@ is the greatest (positive) integer that divides both @x@
 -- and @y@; for example @'gcd' (-3) 6@ = @3@, @'gcd' (-3) (-6)@ = @3@,
 -- @'gcd' 0 4@ = @4@.  @'gcd' 0 0@ raises a runtime error.
 gcd             :: (Integral a) => a -> a -> a
 gcd 0 0         =  error "Prelude.gcd: gcd 0 0 is undefined"
 gcd x y         = GHC.Real.gcd x y
-#endif
 
-#ifndef __HUGS__
 -- The GHC's version of 'splitAt' is too strict in 'n' compared to
 -- Haskell98/2010 version. Ticket #1182.
 
@@ -231,4 +191,4 @@ gcd x y         = GHC.Real.gcd x y
 -- in which @n@ may be of any integral type.
 splitAt                :: Int -> [a] -> ([a],[a])
 splitAt n xs           =  (take n xs, drop n xs)
-#endif
+
