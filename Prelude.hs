@@ -125,7 +125,7 @@ import qualified "base" Control.Exception.Base as New (catch)
 import "base" Control.Monad
 import "base" System.IO
 import "base" System.IO.Error (IOError, ioError, userError)
-import "base" Data.List hiding ( splitAt )
+import "base" Data.OldList hiding ( splitAt )
 import "base" Data.Either
 import "base" Data.Maybe
 import "base" Data.Tuple

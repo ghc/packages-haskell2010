@@ -186,4 +186,4 @@ module Data.List (
    , genericReplicate  -- :: (Integral a) => a -> b -> [b]
 
   ) where
-import "base" Data.List hiding ( splitAt )
+import "base" Data.OldList hiding ( splitAt )
