@@ -130,7 +130,9 @@ import "base" Data.Either
 import "base" Data.Maybe
 import "base" Data.Tuple
 
-import GHC.Base
+import GHC.Base (($), ($!), (&&), (.), (||), Bool(..), Char, Eq(..), Int,
+                 Ord(..), Ordering(..), String, asTypeOf, const, error, flip,
+                 id, not, otherwise, seq, undefined, until)
 import Text.Read
 import GHC.Enum
 import GHC.Num
