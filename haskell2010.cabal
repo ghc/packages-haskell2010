@@ -29,8 +29,6 @@ Library
         NoImplicitPrelude
         Safe
         Trustworthy
-    if impl(ghc)
-        other-extensions: Safe, Trustworthy
 
     build-depends:
         array >= 0.5 && < 0.6,
@@ -40,8 +38,7 @@ Library
     -- build system doesn't seem to track transitive dependencies when
     -- running Haddock, and if we don't do this then Haddock can't
     -- find the docs for things defined in ghc-prim.
-    if impl(ghc)
-        build-depends: ghc-prim >= 0.3.1 && < 0.4
+    build-depends: ghc-prim >= 0.3.1 && < 0.4
 
     -- haskell2010 is a "hidden" package
     exposed: False
