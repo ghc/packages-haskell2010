@@ -1,5 +1,7 @@
 {-# LANGUAGE CPP, PackageImports #-}
-#if __GLASGOW_HASKELL__ >= 701
+#if __GLASGOW_HASKELL__ >= 709
+{-# LANGUAGE Safe #-}
+#elif __GLASGOW_HASKELL__ >= 701
 {-# LANGUAGE Trustworthy #-}
 #endif
 
