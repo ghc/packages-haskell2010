@@ -66,7 +66,7 @@ module Foreign.Marshal.Array (
   ) where
 import qualified "base" Foreign.Marshal.Array as Base
 import "base" Foreign.Marshal.Array hiding (peekArray)
-#if __GLASGOW_HASKELL__ >= 701
+#if __GLASGOW_HASKELL__ >= 701 && __GLASGOW_HASKELL__ < 709
 import "base" Foreign.Safe hiding (peekArray)
 #else
 import "base" Foreign hiding (peekArray)
