@@ -122,10 +122,10 @@ module Prelude (
   ) where
 
 import qualified "base" Control.Exception.Base as New (catch)
-import "base" Control.Monad
+import "this" Control.Monad
 import "base" System.IO
 import "base" System.IO.Error (IOError, ioError, userError)
-import "base" Data.OldList hiding ( splitAt )
+import "this" Data.List
 import "base" Data.Either
 import "base" Data.Maybe
 import "base" Data.Tuple
@@ -173,24 +173,4 @@ catch = New.catch
 gcd             :: (Integral a) => a -> a -> a
 gcd 0 0         =  error "Prelude.gcd: gcd 0 0 is undefined"
 gcd x y         = GHC.Real.gcd x y
-
--- The GHC's version of 'splitAt' is too strict in 'n' compared to
--- Haskell98/2010 version. Ticket #1182.
-
--- | 'splitAt' @n xs@ returns a tuple where first element is @xs@ prefix of
--- length @n@ and second element is the remainder of the list:
---
--- > splitAt 6 "Hello World!" == ("Hello ","World!")
--- > splitAt 3 [1,2,3,4,5] == ([1,2,3],[4,5])
--- > splitAt 1 [1,2,3] == ([1],[2,3])
--- > splitAt 3 [1,2,3] == ([1,2,3],[])
--- > splitAt 4 [1,2,3] == ([1,2,3],[])
--- > splitAt 0 [1,2,3] == ([],[1,2,3])
--- > splitAt (-1) [1,2,3] == ([],[1,2,3])
---
--- It is equivalent to @('take' n xs, 'drop' n xs)@.
--- 'splitAt' is an instance of the more general 'Data.List.genericSplitAt',
--- in which @n@ may be of any integral type.
-splitAt                :: Int -> [a] -> ([a],[a])
-splitAt n xs           =  (take n xs, drop n xs)
 

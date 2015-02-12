@@ -1,7 +1,7 @@
-{-# LANGUAGE CPP, PackageImports #-}
-#if __GLASGOW_HASKELL__ >= 701
-{-# LANGUAGE Safe #-}
-#endif
+{-# LANGUAGE CPP #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE PackageImports #-}
+{-# LANGUAGE Trustworthy #-}
 
 module Data.List (
    -- * Basic functions
@@ -184,6 +184,122 @@ module Data.List (
    , genericSplitAt    -- :: (Integral a) => a -> [b] -> ([b], [b])
    , genericIndex      -- :: (Integral a) => [b] -> a -> b
    , genericReplicate  -- :: (Integral a) => a -> b -> [b]
-
   ) where
-import "base" Data.OldList hiding ( splitAt )
+
+import "base" Data.List hiding
+    ( splitAt, -- wrong strictness
+      -- FTP-generalised verbs
+      all, and, any, concat, concatMap, elem, find,
+      foldl, foldl1, foldl', foldr, foldr1, mapAccumL,
+      mapAccumR, maximum, maximumBy, minimum, minimumBy,
+      length, notElem, null, or, product, sum )
+
+import GHC.List
+    ( -- FTP-generalised verbs
+      all, and, any, concat, concatMap, elem,
+      foldl, foldl1, foldl', foldr, foldr1,
+      maximum, minimum,
+      length, notElem, null, or, product, sum )
+
+import GHC.Base ( Int, Ordering(..), Bool, error, Maybe(..), (.), oneShot )
+import "base" Data.Maybe (listToMaybe)
+
+-- The GHC's version of 'splitAt' is too strict in 'n' compared to
+-- Haskell98/2010 version. Ticket #1182.
+
+-- | 'splitAt' @n xs@ returns a tuple where first element is @xs@ prefix of
+-- length @n@ and second element is the remainder of the list:
+--
+-- > splitAt 6 "Hello World!" == ("Hello ","World!")
+-- > splitAt 3 [1,2,3,4,5] == ([1,2,3],[4,5])
+-- > splitAt 1 [1,2,3] == ([1],[2,3])
+-- > splitAt 3 [1,2,3] == ([1,2,3],[])
+-- > splitAt 4 [1,2,3] == ([1,2,3],[])
+-- > splitAt 0 [1,2,3] == ([],[1,2,3])
+-- > splitAt (-1) [1,2,3] == ([],[1,2,3])
+--
+-- It is equivalent to @('take' n xs, 'drop' n xs)@.
+-- 'splitAt' is an instance of the more general 'Data.List.genericSplitAt',
+-- in which @n@ may be of any integral type.
+splitAt                :: Int -> [a] -> ([a],[a])
+splitAt n xs           =  (take n xs, drop n xs)
+
+
+----------------------------------------------------------------------------
+-- the code below has been copied from `base-4.8.0.0` as it wasn't exported via modules
+
+-- | The 'maximumBy' function takes a comparison function and a list
+-- and returns the greatest element of the list by the comparison function.
+-- The list must be finite and non-empty.
+maximumBy               :: (a -> a -> Ordering) -> [a] -> a
+maximumBy _ []          =  error "List.maximumBy: empty list"
+maximumBy cmp xs        =  foldl1 maxBy xs
+                        where
+                           maxBy x y = case cmp x y of
+                                       GT -> x
+                                       _  -> y
+
+-- | The 'minimumBy' function takes a comparison function and a list
+-- and returns the least element of the list by the comparison function.
+-- The list must be finite and non-empty.
+minimumBy               :: (a -> a -> Ordering) -> [a] -> a
+minimumBy _ []          =  error "List.minimumBy: empty list"
+minimumBy cmp xs        =  foldl1 minBy xs
+                        where
+                           minBy x y = case cmp x y of
+                                       GT -> y
+                                       _  -> x
+
+-- | The 'find' function takes a predicate and a list and returns the
+-- first element in the list matching the predicate, or 'Nothing' if
+-- there is no such element.
+find            :: (a -> Bool) -> [a] -> Maybe a
+find p          = listToMaybe . filter p
+
+-- | The 'mapAccumL' function behaves like a combination of 'map' and
+-- 'foldl'; it applies a function to each element of a list, passing
+-- an accumulating parameter from left to right, and returning a final
+-- value of this accumulator together with the new list.
+mapAccumL :: (acc -> x -> (acc, y)) -- Function of elt of input list
+                                    -- and accumulator, returning new
+                                    -- accumulator and elt of result list
+          -> acc            -- Initial accumulator
+          -> [x]            -- Input list
+          -> (acc, [y])     -- Final accumulator and result list
+{-# NOINLINE [1] mapAccumL #-}
+mapAccumL _ s []        =  (s, [])
+mapAccumL f s (x:xs)    =  (s'',y:ys)
+                           where (s', y ) = f s x
+                                 (s'',ys) = mapAccumL f s' xs
+
+{-# RULES
+"mapAccumL" [~1] forall f s xs . mapAccumL f s xs = foldr (mapAccumLF f) pairWithNil xs s
+"mapAccumLList" [1] forall f s xs . foldr (mapAccumLF f) pairWithNil xs s = mapAccumL f s xs
+ #-}
+
+pairWithNil :: acc -> (acc, [y])
+{-# INLINE [0] pairWithNil #-}
+pairWithNil x = (x, [])
+
+mapAccumLF :: (acc -> x -> (acc, y)) -> x -> (acc -> (acc, [y])) -> acc -> (acc, [y])
+{-# INLINE [0] mapAccumLF #-}
+mapAccumLF f = \x r -> oneShot (\s ->
+                         let (s', y)   = f s x
+                             (s'', ys) = r s'
+                         in (s'', y:ys))
+  -- See Note [Left folds via right fold] in base
+
+-- | The 'mapAccumR' function behaves like a combination of 'map' and
+-- 'foldr'; it applies a function to each element of a list, passing
+-- an accumulating parameter from right to left, and returning a final
+-- value of this accumulator together with the new list.
+mapAccumR :: (acc -> x -> (acc, y))     -- Function of elt of input list
+                                        -- and accumulator, returning new
+                                        -- accumulator and elt of result list
+            -> acc              -- Initial accumulator
+            -> [x]              -- Input list
+            -> (acc, [y])               -- Final accumulator and result list
+mapAccumR _ s []        =  (s, [])
+mapAccumR f s (x:xs)    =  (s'', y:ys)
+                           where (s'',y ) = f s' x
+                                 (s', ys) = mapAccumR f s xs
